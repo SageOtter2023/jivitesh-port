@@ -1,0 +1,110 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>About</title>  
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">  
+    <style>  
+        body {  
+            margin: 0;  
+            overflow: hidden;  
+        }  
+
+        .head {  
+            display: flex;  
+            flex-direction: column;  
+            justify-content: center;  
+            align-items: center;  
+            height: 100vh;  
+            color: black; /* Default text color */  
+            font-family: 'Roboto', sans-serif;  
+            position: relative;  
+            z-index: 10; /* Ensure text is above background */  
+        }  
+
+        .heading {  
+            font-size: 80px; /* Increased size for emphasis */  
+            font-weight: bold; /* Bold text */  
+            text-align: center;  
+            position: absolute; /* Positioning it at the top center */  
+            top: 10%; /* Adjust as needed */  
+            color: white; /* Change text color to white */  
+        }  
+
+        #element {  
+            font-size: 25px;  
+            font-family: monospace;  
+            text-align: center;  
+            margin-top: 10px; /* Space between heading and text */  
+            color: white; /* Change text color to white */  
+            transition: color 0.3s; /* Smooth transition for color change */  
+        }  
+
+        /* Background styling */  
+        spline-viewer {  
+            position: absolute;  
+            top: 0;  
+            left: 0;  
+            width: 100%;  
+            height: 100%;  
+            z-index: 1; /* Background behind text */  
+        }  
+
+        /* Change text color on hover */  
+        spline-viewer:hover + .head #element {  
+            color: white; /* Keep it white when hovering over the robot */  
+        }  
+
+        .home-button {  
+            position: absolute;  
+            top: 20px;  
+            left: 20px;  
+            padding: 10px 20px;  
+            background-color: #007BFF; /* Bootstrap primary color */  
+            color: white;  
+            border: none;  
+            border-radius: 5px;  
+            cursor: pointer;  
+            z-index: 20; /* Ensure button is above background */  
+            text-decoration: none; /* Remove underline from link */  
+            font-family: 'Roboto', sans-serif;  
+        }  
+
+        .home-button:hover {  
+            background-color: #0056b3;
+        }
+    </style>  
+</head>  
+<body>   
+
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.23/build/spline-viewer.js"></script>  
+    <spline-viewer url="https://prod.spline.design/7AZasvaHT4W-tKb3/scene.splinecode"></spline-viewer>  
+
+    <a href="indux.html" class="home-button">Home</a>
+
+
+    <div class="head">  
+        <h1 class="heading">About</h1>  
+
+        <div id="element"></div> <!-- Moved this div above the script -->  
+
+        <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>  
+
+        <script class="writing_text">  
+            var typed = new Typed('#element', {  
+                strings: [  
+                    'Greetings! I am Jivitesh Kumar. Born in 2006 under the determined and ambitious sign of Capricorn, I have always been drawn to the intricate and evolving world of technology. As a budding tech enthusiast, I find myself on a relentless journey to master the art of web and app development. My path hasn\'t been without its challenges—having once ventured into the depths of Data Structures and Algorithms, I faced setbacks but now stand ready to conquer them anew.',  
+                    'Beyond the digital realm, I am a fervent believer in the power of physical resilience. I channel this through my passion for marathon running, rigorous gym sessions, and the strategic play of football and basketball. My culinary experiments keep my creativity alive, while my constant endeavor to connect with like-minded individuals enriches my perspective.',  
+                    'Networking isn\'t just a skill but a lifestyle—each interaction an opportunity, each connection a doorway to new possibilities. I am always keen to assist those within my domain of expertise, offering insights and support where it resonates.',  
+                    'Should our paths align, feel free to connect with me through Instagram, LinkedIn, or Gmail. Together, we might just unlock new horizons.'  
+                ],  
+                typeSpeed: 40,
+                backSpeed: 20,
+                backDelay: 1000,  
+                loop: true,   
+            });  
+        </script>  
+    </div>  
+</body>  
+</html>
