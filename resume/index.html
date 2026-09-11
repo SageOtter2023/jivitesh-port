@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jivitesh Kumar — Résumé</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,600..800&family=Archivo:wdth,wght@62..125,400..700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Single column, real text, standard headings — reads cleanly for humans and ATS parsers alike.
+   Source for resume/Jivitesh-Kumar-Resume.pdf. Regenerate after edits (see README). */
+@page{ size: A4; margin: 0; }
+:root{
+  --ink:#16171B; --muted:#55544F; --line:#D8D5CD; --accent:#1B3BE8;
+  --display:"Bricolage Grotesque", Archivo, Helvetica, Arial, sans-serif;
+  --sans:"Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, Consolas, monospace;
+}
+*{ box-sizing:border-box; }
+html{ background:#E9E7E1; }
+body{
+  margin:0; color:var(--ink); font-family:var(--sans);
+  font-size:9.2pt; line-height:1.42; -webkit-font-smoothing:antialiased;
+  -webkit-print-color-adjust:exact; print-color-adjust:exact;
+}
+.sheet{
+  width:210mm; min-height:297mm; margin:24px auto; background:#fff;
+  padding:11mm 15mm 10mm; box-shadow:0 1px 3px rgba(0,0,0,.08), 0 10px 40px rgba(0,0,0,.08);
+}
+@media print{
+  html{ background:#fff; }
+  .sheet{ margin:0; box-shadow:none; }
+}
+
+/* header */
+header{ display:flex; justify-content:space-between; align-items:flex-end; gap:20px; padding-bottom:10px; border-bottom:1.5px solid var(--ink); }
+h1{
+  margin:0; font-family:var(--display); font-weight:800;
+  font-size:27pt; line-height:.86; letter-spacing:-.05em;
+}
+h1 span{ color:var(--accent); }
+.role{ margin:6px 0 0; font-family:var(--mono); font-size:8pt; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); }
+.contact{ list-style:none; margin:0; padding:0; text-align:right; font-family:var(--mono); font-size:7.8pt; line-height:1.6; }
+.contact a{ color:var(--ink); text-decoration:none; }
+
+.summary{ margin:10px 0 0; font-size:9.4pt; line-height:1.48; max-width:none; }
+
+/* sections */
+h2{
+  margin:11px 0 5px; font-family:var(--mono); font-weight:500;
+  font-size:7.8pt; letter-spacing:.16em; text-transform:uppercase; color:var(--accent);
+  display:flex; align-items:center; gap:10px;
+}
+h2::after{ content:""; flex:1; height:1px; background:var(--line); }
+
+.item{ margin:0 0 8px; break-inside:avoid; }
+.item:last-child{ margin-bottom:0; }
+.row{ display:flex; justify-content:space-between; align-items:baseline; gap:14px; }
+h3{ margin:0; font-family:var(--display); font-weight:700; font-size:10.6pt; letter-spacing:-.03em; }
+h3 small{ font-family:var(--sans); font-weight:400; font-size:9pt; letter-spacing:0; color:var(--muted); }
+.when{ font-family:var(--mono); font-size:7.8pt; letter-spacing:.03em; color:var(--muted); white-space:nowrap; }
+.sub{ margin:1px 0 3px; font-size:8.8pt; color:var(--muted); font-style:italic; }
+
+ul.b{ margin:2px 0 0; padding-left:13px; }
+ul.b li{ margin:0 0 2.2px; padding-left:2px; }
+ul.b li::marker{ color:var(--accent); }
+b{ font-weight:600; }
+.stack{ margin:3px 0 0; font-family:var(--mono); font-size:7.6pt; color:var(--muted); letter-spacing:.01em; }
+
+.skills{ display:grid; grid-template-columns:118px 1fr; gap:3px 12px; margin:0; }
+.skills dt{ font-weight:600; }
+.skills dd{ margin:0; color:var(--ink); }
+</style>
+</head>
+<body>
+<main class="sheet">
+
+<header>
+  <div>
+    <h1>Jivitesh <span>Kumar</span></h1>
+    <p class="role">AI/ML &amp; Data Analysis</p>
+  </div>
+  <ul class="contact">
+    <li>Mumbai, India</li>
+    <li><a href="mailto:jiviteshk32@gmail.com">jiviteshk32@gmail.com</a></li>
+    <li><a href="https://www.linkedin.com/in/jivitesh-kumar-252731287/">linkedin.com/in/jivitesh-kumar-252731287</a></li>
+    <li><a href="https://github.com/JiviteshKumar">github.com/JiviteshKumar</a></li>
+    <li><a href="https://jiviteshkumar.github.io/jivitesh-port/">jiviteshkumar.github.io/jivitesh-port</a></li>
+  </ul>
+</header>
+
+<p class="summary">Final-year B.Tech IT student building AI systems where deterministic code handles what must be exact and models handle what changes. Two internships shipping AI in telecom security and hospitality SaaS; co-building Leo, a self-repairing browser-automation extension.</p>
+
+<h2>Experience</h2>
+
+<div class="item">
+  <div class="row"><h3>DigiGo LLP <small>&nbsp;Intern · On-site</small></h3><span class="when">Jun 2026 – Aug 2026</span></div>
+  <p class="sub">AI SaaS for identity verification and guest operations in hospitality</p>
+  <ul class="b">
+    <li>Helped build the authentication flow and make the end-to-end sign-in experience seamless; contributed to research, AI product development and client relationship management, reporting directly to a co-founder.</li>
+  </ul>
+</div>
+
+<div class="item">
+  <div class="row"><h3>Tata Teleservices Limited <small>&nbsp;AI/ML Intern</small></h3><span class="when">Jun 2025 – Dec 2025</span></div>
+  <p class="sub">Intelligent abuse email processing and incident summarisation</p>
+  <ul class="b">
+    <li>Built an end-to-end pipeline triaging <b>1,000+ abuse and security emails a day</b> (IP abuse, phishing, botnet, DDoS, blacklist notices), cutting manual analysis time by <b>over 80%</b> &mdash; from 3&ndash;5 minutes of reading per email to seconds.</li>
+    <li>Orchestrated with Power Automate from Outlook; normalised HTML, PDF, CSV and log attachments to clean text and deduplicated and standardised records with Pandas.</li>
+    <li>Extracted IPs, domains, ASNs, ports, URLs, hashes and timestamps with regex <b>before</b> summarisation, so the fields analysts act on never depended on model output.</li>
+    <li>Generated structured incident summaries (attack type, affected IP, severity, root cause) with a <b>FLAN-T5 Base model fine-tuned</b> on historical analyst summaries using <b>LoRA/PEFT and 4-bit quantisation</b> and <b>deployed in production</b>, replacing the initial prompt-based approach; evaluated by hand for factual accuracy, missed entities and hallucination.</li>
+  </ul>
+  <p class="stack">Python · Pandas · NumPy · Regex · OpenPyXL · Hugging Face Transformers · BitsAndBytes · Power Automate</p>
+</div>
+
+<h2>Projects</h2>
+
+<div class="item">
+  <div class="row"><h3>Leo <small>&nbsp;Chrome extension · co-built with one teammate</small></h3><span class="when">2026</span></div>
+  <ul class="b">
+    <li>Records a browser task once and replays it as <b>plain code with zero AI calls on a clean run</b>; AI repairs a step only when all of up to 10 ranked selectors miss (text match first, vision agent on low confidence) and saves the fix back as code.</li>
+    <li>Rebuilt the replay engine for reliability: trusted input via the Chrome DevTools Protocol, actionability waits, cross-origin iframes, navigation, download and tab handling, drag-and-drop, per-step logs and failure screenshots &mdash; <b>17 passing e2e scenarios</b>.</li>
+    <li>Moved all AI calls behind authenticated, rate-limited server routes and added an Anthropic Claude / Groq GPT-OSS-120B provider layer, passing <b>3/3 live-model tests</b> including self-healing a redesigned page.</li>
+  </ul>
+  <p class="stack">TypeScript · Chrome MV3 (WXT) · React · Next.js · Neon + Drizzle · better-auth · Bun · Playwright</p>
+</div>
+
+<div class="item">
+  <div class="row"><h3>Venture Flow <small>&nbsp;AI due-diligence platform · live</small></h3><span class="when">venture-flow-livid.vercel.app</span></div>
+  <ul class="b">
+    <li>Parses pitch decks in 5 formats, reconstructs multi-column layout order, extracts founders for verification, and returns <b>confidence-scored risk assessments</b> with conversational follow-up; analysis runs as 2–4 minute background jobs.</li>
+  </ul>
+  <p class="stack">React 18 · TypeScript · Vite · Tailwind · FastAPI · Groq · PostgreSQL (Neon)</p>
+</div>
+
+<div class="item">
+  <div class="row"><h3>Intelligent ICU Management <small>&nbsp;Mum Hacks · 17-hour hackathon</small></h3><span class="when">Oct 2025</span></div>
+  <ul class="b">
+    <li>Shipped a 5-page clinician frontend overnight for a six-agent concept forecasting ICU and oxygen demand in Tier-2/3 Indian hospitals, using Builder.io's AI app builder (React, TypeScript, Tailwind, Radix UI).</li>
+  </ul>
+</div>
+
+<h2>Education</h2>
+<div class="item">
+  <div class="row"><h3>KJ Somaiya College of Engineering <small>&nbsp;B.Tech, Information Technology · Mumbai</small></h3><span class="when">2023 – 2027</span></div>
+</div>
+
+<h2>Skills</h2>
+<dl class="skills">
+  <dt>AI / ML</dt><dd>Hugging Face Transformers, FLAN-T5, LoRA / PEFT, 4-bit quantisation, Anthropic Claude, Groq, prompt design, manual evaluation</dd>
+  <dt>Data analysis</dt><dd>Pandas, NumPy, data cleaning, regex extraction, Excel / OpenPyXL reporting, text analysis</dd>
+  <dt>Frontend</dt><dd>React 18, Next.js, TypeScript, Vite, Tailwind CSS, Chrome MV3 (WXT), Chrome DevTools Protocol</dd>
+  <dt>Backend &amp; tools</dt><dd>Python, FastAPI, PostgreSQL (Neon), Drizzle, better-auth, Power Automate, Bun, Playwright, Git, Vercel</dd>
+</dl>
+
+</main>
+</body>
+</html>
