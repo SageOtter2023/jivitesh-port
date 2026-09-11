@@ -531,3 +531,16 @@ footer p{
   transition: transform .2s var(--ease), background-color var(--swap);
 }
 .book-btn:hover{ transform: translateY(-2px); }
+
+/* active project — a live pulse, not a "Live" claim */
+.case-state.live{
+  display: inline-flex; align-items: center; gap: 7px;
+  color: var(--accent) !important; opacity: 1;
+  transition: color var(--swap);
+}
+.case-state.live i{
+  width: 7px; height: 7px; border-radius: 50%; flex: none;
+  background: currentColor;
+  box-shadow: 0 0 0 0 currentColor;
+  animation: pulse 2.6s var(--ease) infinite;
+}
