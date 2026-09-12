@@ -37,16 +37,15 @@ canvas is removed and the transition becomes instant.
 
 ### Phones
 
-The storyboard crops instead of shrinking: below 900px the stage shows the machine at 175% and
-pans to whichever object the current frame is about (email → JSON → model → incident), so the
-text stays readable. Progress is measured against the pinned stage's own height, not
-`window.innerHeight`, because a phone's window height changes as the URL bar hides.
+**Phones do not pin the storyboard.** The pinned stage depended on viewport-height units and
+scroll maths, and a phone changes its viewport height whenever the browser toolbar slides away —
+which broke frame timing and left blank bands while scrolling down. Below 900px the four frames
+are simply stacked in order, each with its own copy of the artwork cropped (175%) and panned to
+the object that frame is about. No sticky, no scroll maths, nothing to desync. Desktop keeps the
+pinned, scroll-driven version.
 
-The stage is sized in `dvh`, not `svh`: `svh` is the viewport *with* the browser bars showing,
-so when a phone hides its bars on a downward scroll the stage stayed short and left an empty
-band below it (scrolling back up looked fine, which is the tell). `dvh` tracks the bars.
-The ambient canvas is switched off entirely on phones — it is decorative, drawn at half
-opacity there, and repainting it each frame is what costs a mid-range phone its scroll rate.
+The ambient canvas is switched off entirely on phones — it is decorative, drawn at half opacity
+there, and repainting it each frame is what costs a mid-range phone its scroll rate.
 
 ### Motion setting
 

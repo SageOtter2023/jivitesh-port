@@ -474,10 +474,57 @@
     var ty = clamp(wh / 2 - f[1] * mh, Math.min(0, wh - mh), 0);
     machine.style.transform = 'translate(' + tx.toFixed(1) + 'px,' + ty.toFixed(1) + 'px)';
   }
-  if (story && machine) story.classList.add('pinned');
+  var pinnedStory = false;
+  if (story && machine) {
+    if (phoneStory.matches) buildStackedStory(); else { story.classList.add('pinned'); pinnedStory = true; }
+    // crossing the phone/desktop boundary swaps the whole mechanism; rebuild cleanly
+    if (phoneStory.addEventListener) phoneStory.addEventListener('change', function () { window.location.reload(); });
+  }
+
+  /* phones get the frames stacked: no sticky, no scroll maths, nothing to desync */
+  function buildStackedStory() {
+    var note = $('figcaption', machine.parentElement);
+    caps.forEach(function (cap, i) {
+      var art = document.createElement('div');
+      art.className = 'cap-art';
+      art.setAttribute('aria-hidden', 'true');
+      var m = machine.cloneNode(true);
+      m.removeAttribute('id');
+      $$('[id]', m).forEach(function (el) { el.removeAttribute('id'); });
+      var sum = $('.sum-text', m);
+      if (sum) sum.textContent = sumFull;
+      m.style.setProperty('--f1', '1');
+      m.style.setProperty('--f2', i >= 1 ? '1' : '0');
+      m.style.setProperty('--f3', i >= 2 ? '1' : '0');
+      m.style.setProperty('--f4', i >= 3 ? '1' : '0');
+      if (i >= 1) m.classList.add('s2');
+      if (i === 2) m.classList.add('s3');
+      art.appendChild(m);
+      cap.appendChild(art);
+      if (i === caps.length - 1 && note) {
+        var n = document.createElement('p');
+        n.className = 'cap-note';
+        n.textContent = note.textContent;
+        cap.appendChild(n);
+      }
+    });
+    requestAnimationFrame(panClones);
+  }
+  function panClones() {
+    $$('.cap-art').forEach(function (art, i) {
+      var m = art.firstElementChild;
+      if (!m) return;
+      var f = FOCUS[i] || FOCUS[0];
+      var mw = m.offsetWidth, mh = m.offsetHeight;
+      if (!mw || !art.clientWidth) return;
+      var tx = clamp(art.clientWidth / 2 - f[0] * mw, Math.min(0, art.clientWidth - mw), 0);
+      var ty = clamp(art.clientHeight / 2 - f[1] * mh, Math.min(0, art.clientHeight - mh), 0);
+      m.style.transform = 'translate(' + tx.toFixed(1) + 'px,' + ty.toFixed(1) + 'px)';
+    });
+  }
 
   function writeStory(force) {
-    if (!story || !machine) return;
+    if (!story || !machine || !pinnedStory) return;
     if (!force && (S.y < storyTop - vh * 1.2 || S.y > storyTop + storyH)) return;
     var span = storyH - (stageH || vh);
     var p = span > 0 ? clamp((S.y - storyTop) / span, 0, 1) : 1;
@@ -714,7 +761,7 @@
     sizeField();
     lastVars = '';
     writeStory(true);
-    panMachine(storyIdx < 0 ? 0 : storyIdx);
+    if (pinnedStory) panMachine(storyIdx < 0 ? 0 : storyIdx); else panClones();
   }
 
   /* ── one loop: read everything, then write everything ─ */

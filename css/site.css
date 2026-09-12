@@ -845,3 +845,21 @@ html.calm .split .wi, html.calm h1.enter .ch, html.calm .band-track{ transform: 
   font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
 }
 .motion-hint .x{ background: none; border: 0; color: var(--muted); font-size: 18px; line-height: 1; padding: 4px 6px; }
+
+/* ── phones: no pinning. Four frames, stacked, each with its own artwork ── */
+@media (max-width: 899px){
+  .story .machine-wrap{ display: none; }
+  .cap-art{
+    position: relative; overflow: hidden; margin-top: 14px;
+    border: 1px solid var(--line); border-radius: .4em; background: var(--surface);
+    aspect-ratio: 4 / 3;
+  }
+  .cap-art .machine{
+    position: absolute; left: 0; top: 0;
+    width: 175%; max-width: none; transform-origin: 0 0;
+  }
+  .cap-note{
+    margin: 8px 0 0; font-family: var(--mono); font-size: 10px; line-height: 1.4;
+    color: var(--muted); max-width: none;
+  }
+}
