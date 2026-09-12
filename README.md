@@ -19,6 +19,29 @@ which swaps every token at once. That seam is the site's signature.
 Disable JavaScript and the whole page still reads, in day. Turn on reduced motion and the
 canvas is removed and the transition becomes instant.
 
+## What moves
+
+- **Storyboard (`01 — The idea`).** A pinned chapter: scroll drives four frames of the Tata
+  pipeline — raw email, regex extraction, model, structured incident. Click a frame in the
+  strip to jump. Without JS the frames render in their finished state, stacked.
+- **Custom cursor.** Dot + trailing ring; inverts against both grounds, grows with a label over
+  links, and says hello in a different language over the name. Pointer devices only.
+- **Follows the visitor.** Letters of the name change weight/width near the cursor, hero layers
+  parallax, buttons pull toward the pointer, tiles light up under it, and the hero knot tilts
+  and repels.
+- **Follows the scroll.** Name splits and the knot scatters on the way down (and reassembles on
+  the way up), ticker reverses with direction and speeds with velocity, band skews with speed,
+  metrics count up, headings rise word by word, case studies show a reading rail.
+- **Languages.** A one-per-visit intro cycles hello through 13 languages and ends on नमस्ते; the
+  contact block rotates a greeting with its language name.
+
+### Motion setting
+
+Motion follows the device's reduced-motion preference. **Windows "Animation effects" is off on
+this machine**, which reads as reduced motion — so the calm version shows by default here. A
+`Motion: on/off` toggle sits in the spine and the footer (stored in `localStorage`), and anyone
+whose device asks for reduced motion gets a one-time note offering to turn it on.
+
 ## Run it
 
 ```bash

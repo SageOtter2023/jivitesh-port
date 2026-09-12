@@ -26,31 +26,36 @@
 <!-- ── spine ────────────────────────────────────────────── -->
 <aside class="spine">
   <a class="spine-mark" href="#top" aria-label="Back to top">JK</a>
-  <nav aria-label="Sections">
-    <a href="#work"><i>01</i> Work</a>
-    <a href="#method"><i>02</i> Method</a>
+  <nav aria-label="Chapters">
+    <a href="#idea"><i>01</i> Idea</a>
+    <a href="#work"><i>02</i> Work</a>
     <a href="#record"><i>03</i> Record</a>
     <a href="#toolkit"><i>04</i> Toolkit</a>
     <a href="#hire"><i>05</i> Hire me</a>
     <a href="#contact"><i>06</i> Contact</a>
   </nav>
-  <p class="clock"><span id="clock">--:--:--</span> Mumbai</p>
+  <div class="spine-foot">
+    <div class="meter" aria-hidden="true"><span id="meter"></span></div>
+    <p class="dir" id="dir" aria-hidden="true">0% &darr;</p>
+    <button class="motion-toggle" type="button" hidden>Motion</button>
+    <p class="clock"><span id="clock">--:--:--</span> Mumbai</p>
+  </div>
 </aside>
 
 <main id="top">
 
 <!-- ── 00 · opening ─────────────────────────────────────── -->
 <section class="hero" id="hero">
-  <p class="status"><span class="dot"></span> Open to AI/ML &amp; data roles &middot; taking freelance work</p>
+  <p class="status" data-depth="0.35"><span class="dot"></span> Open to AI/ML &amp; data roles &middot; taking freelance work</p>
 
-  <h1><span>JIVITESH</span><span>KUMAR</span></h1>
+  <h1 id="name" aria-label="Jivitesh Kumar"><span class="line" data-depth="0.9">JIVITESH</span><span class="line" data-depth="1.3">KUMAR</span></h1>
 
   <div class="hero-grid">
-    <div>
+    <div data-depth="0.55">
       <p class="lead">I build AI systems that use the model only where it earns its place &mdash; regex before the LLM, recorded code before the agent, clean parsing before the prompt.</p>
       <p class="lead dim">Final-year B.Tech IT at KJ Somaiya, Mumbai. Two internships in: AI/ML at Tata Teleservices, and research and AI product work at DigiGo.</p>
     </div>
-    <dl class="hero-meta">
+    <dl class="hero-meta" data-depth="0.3">
       <div><dt>Focus</dt><dd>AI systems &amp; data analysis</dd></div>
       <div><dt>Experience</dt><dd>Tata Teleservices &middot; DigiGo</dd></div>
       <div><dt>Education</dt><dd>KJ Somaiya &middot; B.Tech IT</dd></div>
@@ -83,10 +88,93 @@
   </div>
 </section>
 
-<!-- ── 01 · work · NIGHT ────────────────────────────────── -->
+<!-- ── 01 · the idea · storyboard ──────────────────────── -->
+<section class="story" id="idea" aria-labelledby="idea-title">
+  <div class="story-stage">
+    <header class="sec-head story-head">
+      <span class="eyebrow">01 &mdash; The idea</span>
+      <h2 id="idea-title">Code first, model second</h2>
+    </header>
+
+    <div class="story-grid">
+      <ol class="captions">
+        <li class="cap on" data-frame="0">
+          <span class="cap-no">Frame 01 &middot; Input</span>
+          <h3>Messy, and a thousand of it</h3>
+          <p>Abuse reports arrive as HTML, PDFs, CSVs and forwarded chains, wrapped in signatures and legal disclaimers. At Tata Teleservices it was over a thousand a day, each one opened and read by hand.</p>
+        </li>
+        <li class="cap" data-frame="1">
+          <span class="cap-no">Frame 02 &middot; Extract</span>
+          <h3>Deterministic where it matters</h3>
+          <p>IPs, ASNs, URLs and timestamps come out by regex before any model sees the text. The fields a security team acts on never depend on a summariser getting them right.</p>
+        </li>
+        <li class="cap" data-frame="2">
+          <span class="cap-no">Frame 03 &middot; Model</span>
+          <h3>AI only where it earns its place</h3>
+          <p>The model gets clean text and pinned facts, and does the one thing code can't: write the judgement. Leo works the same way &mdash; plain-code replay, and a model only when a site has changed.</p>
+        </li>
+        <li class="cap" data-frame="3">
+          <span class="cap-no">Frame 04 &middot; Output</span>
+          <h3>Honest about what it knows</h3>
+          <p>Every report becomes a structured incident in one format, from a model checked by hand against analysts' own summaries for missed IPs and hallucinations. Venture Flow does the same with a confidence score on every risk.</p>
+        </li>
+      </ol>
+
+      <figure class="machine-wrap">
+        <div class="machine" id="machine" aria-hidden="true">
+          <div class="ghost g2"></div>
+          <div class="ghost g1"></div>
+          <article class="m-card">
+            <p class="m-head"><span>From</span>abuse-desk@example-isp.net</p>
+            <p class="m-head"><span>Subj</span>[ABUSE] Botnet C2 traffic from AS64500</p>
+            <p class="m-noise">---------- Forwarded message ----------</p>
+            <p class="m-body">We observed repeated connections from <mark>203.0.113.42</mark> (<mark>AS64500</mark>) to a known C2 endpoint <mark>hxxp://update-check[.]example/gate.php</mark> between <mark>2025-08-14 02:13 UTC</mark> and <mark>02:41 UTC</mark>. Please investigate and take action.</p>
+            <p class="m-noise">Regards, Network Abuse Team</p>
+            <p class="m-noise">CONFIDENTIALITY NOTICE: This e-mail and any attachments are intended solely for the addressee and may contain privileged information.</p>
+            <p class="m-noise">Sent from Outlook for iOS</p>
+          </article>
+          <p class="count"><span>1,000+ a day</span></p>
+          <div class="json">
+            <p class="obj-label">regex &middot; deterministic</p>
+            <div class="br">{</div>
+            <div class="j" style="--i:0"><span class="jk">"ip"</span>: "203.0.113.42",</div>
+            <div class="j" style="--i:1"><span class="jk">"asn"</span>: "AS64500",</div>
+            <div class="j" style="--i:2"><span class="jk">"url"</span>: "update-check.example/gate.php",</div>
+            <div class="j" style="--i:3"><span class="jk">"first_seen"</span>: "02:13Z",</div>
+            <div class="j" style="--i:4"><span class="jk">"last_seen"</span>: "02:41Z"</div>
+            <div class="br">}</div>
+          </div>
+          <svg class="wires" viewBox="0 0 44 36" preserveAspectRatio="none" focusable="false"><path class="w1" pathLength="1" d="M24.3 11.4 C 25.9 11.4, 25.7 7.8, 27.4 7.8"/><path class="w2" pathLength="1" d="M35 16.6 C 35 22.6, 14.8 20.4, 13.8 25.2"/></svg>
+          <div class="model"><i></i><span>FLAN-T5 &middot; fine-tuned</span></div>
+          <div class="sum"><span class="sum-label">Model summary</span><span class="sum-text" id="sumText">Botnet C2 beaconing from customer IP 203.0.113.42 (AS64500) over 28 minutes. Likely compromised host.</span><span class="caret"></span></div>
+          <div class="inc">
+            <p class="inc-id">INC-0814-0213</p>
+            <dl>
+              <div><dt>Type</dt><dd>Botnet C2</dd></div>
+              <div><dt>Severity</dt><dd class="sev">High</dd></div>
+              <div><dt>IP</dt><dd>203.0.113.42</dd></div>
+              <div><dt>Cause</dt><dd>Compromised host</dd></div>
+            </dl>
+            <p class="inc-foot">Logged &rarr; incident log</p>
+          </div>
+        </div>
+        <figcaption>Illustrative reconstruction of the Tata Teleservices pipeline. Example data uses documentation-reserved IPs and ASNs.</figcaption>
+      </figure>
+    </div>
+
+    <nav class="board" aria-label="Storyboard frames">
+      <button type="button" class="frame on" data-frame="0"><span class="fr-no">01</span><span class="fr-name">Input</span><span class="fr-bar"><i></i></span></button>
+      <button type="button" class="frame" data-frame="1"><span class="fr-no">02</span><span class="fr-name">Extract</span><span class="fr-bar"><i></i></span></button>
+      <button type="button" class="frame" data-frame="2"><span class="fr-no">03</span><span class="fr-name">Model</span><span class="fr-bar"><i></i></span></button>
+      <button type="button" class="frame" data-frame="3"><span class="fr-no">04</span><span class="fr-name">Output</span><span class="fr-bar"><i></i></span></button>
+    </nav>
+  </div>
+</section>
+
+<!-- ── 02 · work · NIGHT ────────────────────────────────── -->
 <section class="work night-zone" id="work" data-night>
   <header class="sec-head">
-    <span class="eyebrow">01 &mdash; Selected work</span>
+    <span class="eyebrow">02 &mdash; Selected work</span>
     <h2>Three things worth defending</h2>
   </header>
 
@@ -185,30 +273,9 @@
   </article>
 </section>
 
-<!-- ── 02 · method ──────────────────────────────────────── -->
-<section class="method" id="method">
-  <header class="sec-head">
-    <span class="eyebrow">02 &mdash; Method</span>
-    <h2>Code first, model second</h2>
-  </header>
-  <div class="method-grid">
-    <p class="lead">Every AI system I've built ends up the same shape: the model is the smallest box in the diagram. The work is everything around it &mdash; getting clean input in, pinning down what has to be exact, and making the output honest about what it doesn't know.</p>
-    <div class="principles">
-      <div>
-        <h3>Deterministic where it matters</h3>
-        <p>At Tata Teleservices, IPs, domains, ports and timestamps came out by regex before the model saw anything &mdash; so the fields a security team acts on never depended on a summariser getting them right.</p>
-      </div>
-      <div>
-        <h3>AI where things change</h3>
-        <p>Leo replays as plain code and only calls a model when a site has moved. The fix is saved back as code, so the expensive path is taken once, not on every run.</p>
-      </div>
-      <div>
-        <h3>Make uncertainty visible</h3>
-        <p>Venture Flow scores every risk with a confidence. At Tata, summaries were checked by hand against analyst write-ups for missed IPs and hallucinations, not judged on loss alone.</p>
-      </div>
-    </div>
-  </div>
-</section>
+<div class="band" aria-hidden="true">
+  <div class="band-track" id="band"><span>Deterministic first</span><span class="o">Model second</span><span>Honest output</span><span class="o">Code first</span><span>Deterministic first</span><span class="o">Model second</span><span>Honest output</span><span class="o">Code first</span></div>
+</div>
 
 <!-- ── 03 · record ──────────────────────────────────────── -->
 <section class="record" id="record">
@@ -322,6 +389,7 @@
     <span class="eyebrow">06 &mdash; The ask</span>
     <h2>Let's talk</h2>
   </header>
+  <p class="hello"><span class="hello-word" id="helloWord" lang="hi">नमस्ते</span><span class="hello-lang" id="helloLang">Hindi</span></p>
   <p class="contact-lead">Hiring for AI/ML, or have something that should run itself? Mail me. I answer everything.</p>
   <div class="contact-actions">
     <a class="mail" id="mail" href="mailto:jiviteshk32@gmail.com">jiviteshk32@gmail.com</a>
@@ -338,7 +406,8 @@
 <footer class="night-zone" data-night>
   <p>Jivitesh Kumar &mdash; <span id="year">2026</span></p>
   <p>Bricolage Grotesque &middot; Archivo &middot; JetBrains Mono</p>
-  <p>Hand-built. No framework, no template.</p>
+  <p>Hand-built in Mumbai. No framework, no template.</p>
+  <p><button class="motion-toggle" type="button" hidden>Motion</button></p>
 </footer>
 
 </main>
