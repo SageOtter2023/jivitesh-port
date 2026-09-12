@@ -451,16 +451,32 @@
   var story = $('.story'), machine = $('#machine');
   var caps = $$('.cap'), frames = $$('.frame');
   var sumEl = $('#sumText'), sumFull = sumEl ? sumEl.textContent : '', sumN = -1;
-  var storyTop = 0, storyH = 0, storyIdx = -1;
+  var storyTop = 0, storyH = 0, stageH = 0, storyIdx = -1;
   var FR = [[0, 0.22], [0.22, 0.47], [0.47, 0.73], [0.73, 1]];
   var JUMP = [0.14, 0.44, 0.71, 0.94];
   var lastVars = '';
+  var phoneStory = window.matchMedia('(max-width: 899px)');
+  // where each frame's subject sits inside the 44x36em stage, as a fraction
+  var FOCUS = [[0.32, 0.33], [0.80, 0.29], [0.31, 0.82], [0.80, 0.73]];
+  function panMachine(idx) {
+    if (!machine) return;
+    if (!phoneStory.matches) { if (machine.style.transform) machine.style.transform = ''; return; }
+    var wrap = machine.parentElement;
+    var cap = $('figcaption', wrap);
+    var ww = wrap.clientWidth, wh = wrap.clientHeight - (cap ? cap.offsetHeight : 0);
+    var mw = machine.offsetWidth, mh = machine.offsetHeight;
+    if (!ww || !mw) return;
+    var f = FOCUS[idx] || FOCUS[0];
+    var tx = clamp(ww / 2 - f[0] * mw, Math.min(0, ww - mw), 0);
+    var ty = clamp(wh / 2 - f[1] * mh, Math.min(0, wh - mh), 0);
+    machine.style.transform = 'translate(' + tx.toFixed(1) + 'px,' + ty.toFixed(1) + 'px)';
+  }
   if (story && machine) story.classList.add('pinned');
 
   function writeStory(force) {
     if (!story || !machine) return;
     if (!force && (S.y < storyTop - vh * 1.2 || S.y > storyTop + storyH)) return;
-    var span = storyH - vh;
+    var span = storyH - (stageH || vh);
     var p = span > 0 ? clamp((S.y - storyTop) / span, 0, 1) : 1;
     var f1 = ramp(p, 0, 0.12), f2 = ramp(p, 0.25, 0.42), f3 = ramp(p, 0.5, 0.7), f4 = ramp(p, 0.76, 0.92);
     var key = f1.toFixed(3) + f2.toFixed(3) + f3.toFixed(3) + f4.toFixed(3);
@@ -479,6 +495,7 @@
     if (idx !== storyIdx) {
       storyIdx = idx;
       caps.forEach(function (c, i) { c.classList.toggle('on', i === idx); });
+      panMachine(idx);
       frames.forEach(function (f, i) {
         f.classList.toggle('on', i === idx);
         if (i === idx) f.setAttribute('aria-current', 'step'); else f.removeAttribute('aria-current');
@@ -491,7 +508,7 @@
   }
   frames.forEach(function (f, i) {
     f.addEventListener('click', function () {
-      window.scrollTo({ top: storyTop + JUMP[i] * (storyH - vh), behavior: reduce ? 'auto' : 'smooth' });
+      window.scrollTo({ top: storyTop + JUMP[i] * (storyH - (stageH || vh)), behavior: reduce ? 'auto' : 'smooth' });
     });
   });
 
@@ -683,12 +700,18 @@
     vw = window.innerWidth;
     vh = window.innerHeight;
     docH = root.scrollHeight;
-    if (story) { storyTop = story.getBoundingClientRect().top + window.scrollY; storyH = story.offsetHeight; }
+    if (story) {
+      storyTop = story.getBoundingClientRect().top + window.scrollY;
+      storyH = story.offsetHeight;
+      var stageEl = $('.story-stage');          // the pinned stage is 100svh; window height is not
+      if (stageEl) stageH = stageEl.offsetHeight;
+    }
     if (band) { bandW = band.scrollWidth / 2; bandTop = band.parentElement.getBoundingClientRect().top + window.scrollY; }
     if (tape) tapeW = tape.scrollWidth / 2;
     sizeField();
     lastVars = '';
     writeStory(true);
+    panMachine(storyIdx < 0 ? 0 : storyIdx);
   }
 
   /* ── one loop: read everything, then write everything ─ */

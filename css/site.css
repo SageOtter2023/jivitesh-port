@@ -575,28 +575,28 @@ html.has-cursor, html.has-cursor *{ cursor: none !important; }
 .cursor{ position: fixed; left: 0; top: 0; z-index: 9999; pointer-events: none; transition: opacity .25s ease; }
 .cursor.is-hidden{ opacity: 0; }
 .c-dot, .c-ring{ position: fixed; left: 0; top: 0; border-radius: 50%; pointer-events: none; will-change: transform; }
-.c-dot{ width: 6px; height: 6px; margin: -3px 0 0 -3px; background: #fff; mix-blend-mode: difference; transition: opacity .2s ease; }
+.c-dot{ width: 7px; height: 7px; margin: -3.5px 0 0 -3.5px; background: var(--accent); transition: opacity .2s ease, background-color var(--swap); }
 .c-ring{
   width: 38px; height: 38px; margin: -19px 0 0 -19px;
-  border: 1px solid #fff; mix-blend-mode: difference;
+  border: 1px solid color-mix(in srgb, var(--fg) 42%, transparent);
   display: grid; place-items: center;
   transition: width .38s var(--out), height .38s var(--out), margin .38s var(--out), background-color .3s ease, border-color .3s ease;
 }
 .c-label{
   font-family: var(--mono), var(--intl); font-size: 10px; letter-spacing: .12em;
-  text-transform: uppercase; white-space: nowrap; color: #fff;
+  text-transform: uppercase; white-space: nowrap; color: var(--fg);
   opacity: 0; transition: opacity .2s ease;
 }
 .cursor.is-link .c-ring{
   width: 78px; height: 78px; margin: -39px 0 0 -39px;
-  background: var(--accent); border-color: var(--accent); mix-blend-mode: normal;
+  background: var(--accent); border-color: var(--accent);
 }
 .cursor.is-link .c-label{ opacity: 1; color: var(--on-accent); }
 .cursor.is-link .c-dot, .cursor.is-name .c-dot{ opacity: 0; }
-.cursor.is-name .c-ring{ width: 128px; height: 128px; margin: -64px 0 0 -64px; }
+.cursor.is-name .c-ring{ width: 128px; height: 128px; margin: -64px 0 0 -64px; border-color: var(--accent); }
 .cursor.is-name .c-label{
   opacity: 1; font-family: "Bricolage Grotesque", var(--intl);
-  font-size: 17px; font-weight: 700; letter-spacing: -.01em; text-transform: none;
+  font-size: 17px; font-weight: 700; letter-spacing: -.01em; text-transform: none; color: var(--accent);
 }
 
 /* ── hero letters ── */
@@ -749,7 +749,10 @@ h1.enter.go .ch{ transform: none; transition: transform 1.05s var(--out) calc(va
 .story.pinned .board{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
 @media (max-width: 899px){
   .story.pinned .story-grid{ align-content: start; gap: 18px; }
-  .story.pinned .machine{ width: min(100%, calc((100svh - 470px) * 1.2222)); }
+  /* phones: crop to the object this frame is about, at readable size */
+  .story.pinned .machine-wrap{ position: relative; display: block; flex: 1; min-height: 30svh; width: 100%; overflow: hidden; }
+  .story.pinned .machine{ position: absolute; left: 0; top: 0; width: 175%; max-width: none; transform-origin: 0 0; transition: transform .55s var(--out); }
+  .story.pinned .machine-wrap figcaption{ position: absolute; left: 0; right: 0; bottom: 0; margin: 0; padding: 5px 0 3px; background: var(--bg); border-top: 1px solid var(--line); font-size: 9.5px; line-height: 1.35; }
   .story.pinned .cap p{ font-size: 14px; }
   .story.pinned .cap h3{ margin: 8px 0 8px; }
   .frame{ padding: 9px 10px 10px; }

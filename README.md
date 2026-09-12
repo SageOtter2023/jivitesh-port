@@ -35,6 +35,13 @@ canvas is removed and the transition becomes instant.
 - **Languages.** A one-per-visit intro cycles hello through 13 languages and ends on नमस्ते; the
   contact block rotates a greeting with its language name.
 
+### Phones
+
+The storyboard crops instead of shrinking: below 900px the stage shows the machine at 175% and
+pans to whichever object the current frame is about (email → JSON → model → incident), so the
+text stays readable. Progress is measured against the pinned stage's own height, not
+`window.innerHeight`, because a phone's window height changes as the URL bar hides.
+
 ### Motion setting
 
 Motion follows the device's reduced-motion preference. **Windows "Animation effects" is off on
