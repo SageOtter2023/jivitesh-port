@@ -15,6 +15,9 @@
   var reduce = motionPref === 'on' ? false : motionPref === 'off' ? true : osReduce;
   var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   var hasIO = 'IntersectionObserver' in window;
+  // phones: skip the ambient canvas entirely. It is decorative, nearly invisible at this
+  // size, and repainting it every frame is what makes a mid-range phone drop scroll frames.
+  var lightweight = window.matchMedia('(max-width: 899px)').matches && window.matchMedia('(pointer: coarse)').matches;
 
   function clamp(v, a, b) { return v < a ? a : v > b ? b : v; }
   function lerp(a, b, t) { return a + (b - a) * t; }
@@ -624,7 +627,7 @@
     H = canvas.height = Math.max(1, Math.floor(vh * dpr));
   }
   function drawField(dt) {
-    if (!ctx) return;
+    if (!ctx || lightweight) return;
     ctx.clearRect(0, 0, W, H);
     if (reduce) return;
 
@@ -755,7 +758,8 @@
   reveal();
   countUps();
   helloCycle();
-  seedField();
+  if (lightweight && canvas) canvas.style.display = 'none';
+  if (!lightweight) seedField();
   measure();
   readNight(); calcNight(); nightAmt = nightTarget; writeNight();
   runIntro(function () { setTimeout(enterName, 160); });
@@ -763,6 +767,10 @@
 
   var rt;
   window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(measure, 120); });
+  // phones resize the visible area when the browser bars slide away
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(measure, 120); });
+  }
   window.addEventListener('load', measure);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
 })();

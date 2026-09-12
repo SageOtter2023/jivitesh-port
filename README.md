@@ -42,6 +42,12 @@ pans to whichever object the current frame is about (email → JSON → model �
 text stays readable. Progress is measured against the pinned stage's own height, not
 `window.innerHeight`, because a phone's window height changes as the URL bar hides.
 
+The stage is sized in `dvh`, not `svh`: `svh` is the viewport *with* the browser bars showing,
+so when a phone hides its bars on a downward scroll the stage stayed short and left an empty
+band below it (scrolling back up looked fine, which is the tell). `dvh` tracks the bars.
+The ambient canvas is switched off entirely on phones — it is decorative, drawn at half
+opacity there, and repainting it each frame is what costs a mid-range phone its scroll rate.
+
 ### Motion setting
 
 Motion follows the device's reduced-motion preference. **Windows "Animation effects" is off on
